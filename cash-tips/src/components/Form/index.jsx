@@ -6,37 +6,37 @@ function Form() {
         // Number of people (how many people are sharing the bill)
         // Tip percentage (what % do you want to tip)
         // Submit button
-        // When a user clicks the submit button, calculate the total bill plus tip and display it, and calculate how much each person needs to pay and display it.
-    
+        // When a user clicks the submit button, calculate the total bill plus tip and display it, 
+        // and calculate how much each person needs to pay and display it.
+
+
         const [BillTotal, setBillTotal] = useState('')
         const [TotalPeople, setTotalPeople] = useState('')
         const [TotalTip, setTotalTip] = useState('')
 
+
+        // inputs
         function handleBillTotal(event) {
-            setBillTotal(event.target.value)
+            setBillTotal(Number(event.target.value))
         }
 
+        function handleTotalPeople(event) {
+            setTotalPeople(Number(event.target.value))
+        }
+
+        function handleTotalTip(event) {
+            setTotalTip(Number(event.target.value))
+        }
+
+        // submit
         function handleSubmit(event) {
             event.preventDefault()
-            console.log (BillTotal)
+            tipMath()
         }
 
-        function handleBillTotal(event) {
-            setBillTotal(event.target.value)
-        }
-
-        function handleSubmit(event) {
-            event.preventDefault()
-            console.log (BillTotal)
-        }
-
-        function handleBillTotal(event) {
-            setBillTotal(event.target.value)
-        }
-
-        function handleSubmit(event) {
-            event.preventDefault()
-            console.log (BillTotal)
+        // tip maths
+        function tipMath() {
+            console.log(((BillTotal + TotalTip) / TotalPeople))
         }
 
 
@@ -47,13 +47,15 @@ function Form() {
                 <input id="total" type="text" onChange={handleBillTotal} />
 
                 <label htmlFor="total" >Total People</label>
-                <input id="total" type="text" />
+                <input id="total" type="text" onChange={handleTotalPeople} />
                 
                 <label htmlFor="total" >Total Tip</label>
-                <input id="total" type="text" />
+                <input id="total" type="text" onChange={handleTotalTip} />
 
                 <button type="submit" >submit</button>
                 
+                <p>{}</p>
+
 
             </form>
 
